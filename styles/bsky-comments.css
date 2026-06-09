@@ -1,0 +1,125 @@
+/* Light DOM styles. No inline styles are injected, so this works under a strict
+   style-src 'self' with no 'unsafe-inline'. Override the custom properties to
+   theme it to a host site. */
+
+.bsky-comments__root {
+  --bskyc-fg: #1a1a1a;
+  --bskyc-muted: #6a6f76;
+  --bskyc-link: #0645ad;
+  --bskyc-border: #e3e3e3;
+  --bskyc-avatar-bg: #d9d9d9;
+
+  display: block;
+  color: var(--bskyc-fg);
+  font-size: 0.9rem;
+  line-height: 1.55;
+}
+
+@media (prefers-color-scheme: dark) {
+  .bsky-comments__root {
+    --bskyc-fg: #e8e8e8;
+    --bskyc-muted: #9aa0a6;
+    --bskyc-link: #6db3f2;
+    --bskyc-border: #333;
+    --bskyc-avatar-bg: #444;
+  }
+}
+
+.bsky-comments__load {
+  font: inherit;
+  padding: 0.4rem 0.9rem;
+  color: inherit;
+  background: transparent;
+  border: 1px solid var(--bskyc-border);
+  border-radius: 0.375rem;
+  cursor: pointer;
+}
+
+.bsky-comments__load:hover {
+  border-color: var(--bskyc-muted);
+}
+
+.bsky-comments__status,
+.bsky-comments__empty {
+  margin: 0.5rem 0 0;
+  color: var(--bskyc-muted);
+}
+
+.bsky-comments__reply {
+  display: inline-block;
+  margin: 0.25rem 0 0.75rem;
+  color: var(--bskyc-link);
+}
+
+.bsky-comments__list,
+.bsky-comments__replies {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.bsky-comments__replies {
+  margin-top: 0.75rem;
+  padding-left: 1rem;
+  border-left: 1px solid var(--bskyc-border);
+}
+
+.bsky-comments__comment {
+  padding: 0.75rem 0;
+  border-top: 1px solid var(--bskyc-border);
+}
+
+.bsky-comments__replies .bsky-comments__comment:first-child {
+  border-top: none;
+}
+
+.bsky-comments__head {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-bottom: 0.35rem;
+}
+
+.bsky-comments__avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: var(--bskyc-avatar-bg);
+  object-fit: cover;
+}
+
+.bsky-comments__author {
+  color: inherit;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.bsky-comments__author:hover {
+  text-decoration: underline;
+}
+
+.bsky-comments__handle {
+  color: var(--bskyc-muted);
+}
+
+.bsky-comments__body {
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+
+.bsky-comments__link {
+  color: var(--bskyc-link);
+}
+
+.bsky-comments__meta {
+  display: inline-block;
+  margin-top: 0.35rem;
+  color: var(--bskyc-muted);
+  font-size: 0.8rem;
+  text-decoration: none;
+}
+
+.bsky-comments__meta:hover {
+  text-decoration: underline;
+}
