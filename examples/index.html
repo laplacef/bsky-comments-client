@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>bsky-comments-client</title>
+  <link rel="stylesheet" href="../dist/bsky-comments.css">
+  <style>
+    :root { color-scheme: light dark; }
+    body { max-width: 40rem; margin: 2rem auto; padding: 0 1rem; font-family: system-ui, sans-serif; background: Canvas; color: CanvasText; }
+    .controls { display: flex; gap: 0.5rem; margin: 1rem 0 1.5rem; }
+    .controls input { flex: 1; padding: 0.4rem; }
+  </style>
+</head>
+<body>
+  <h1>bsky-comments-client</h1>
+  <p>Direct-mode demo. The component fetches a Bluesky thread and renders its replies. Paste another post URL to try it.</p>
+
+  <div class="controls">
+    <input id="url" value="https://bsky.app/profile/bsky.app/post/3mk4lzkrnk22d">
+    <button id="render" type="button">Render</button>
+  </div>
+
+  <bsky-comments id="widget"
+    post="https://bsky.app/profile/bsky.app/post/3mk4lzkrnk22d"
+    trigger="button"
+    sort="likes"></bsky-comments>
+
+  <script type="module" src="../dist/bsky-comments.js"></script>
+  <script type="module">
+    const url = document.getElementById("url");
+    const widget = document.getElementById("widget");
+    document.getElementById("render").addEventListener("click", () => {
+      widget.setAttribute("post", url.value.trim());
+    });
+  </script>
+</body>
+</html>
