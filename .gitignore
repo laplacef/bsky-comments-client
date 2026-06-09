@@ -1,0 +1,9 @@
+# Dependencies
+node_modules/
+
+# Build output (published via npm, not committed)
+dist/
+
+# Logs and OS cruft
+*.log
+.DS_Store

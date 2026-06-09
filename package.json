@@ -1,0 +1,61 @@
+{
+  "name": "bsky-comments-client",
+  "version": "0.1.0",
+  "description": "Privacy-respecting Bluesky comments as a zero-dependency web component, with an optional proxy mode that keeps reader IPs off Bluesky.",
+  "type": "module",
+  "license": "MIT",
+  "author": "Francisco Laplace",
+  "main": "./dist/bsky-comments.js",
+  "module": "./dist/bsky-comments.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/bsky-comments.js"
+    },
+    "./style.css": "./dist/bsky-comments.css"
+  },
+  "unpkg": "./dist/bsky-comments.min.js",
+  "jsdelivr": "./dist/bsky-comments.min.js",
+  "files": [
+    "dist",
+    "src",
+    "styles",
+    "LICENSE",
+    "README.md"
+  ],
+  "sideEffects": [
+    "./dist/bsky-comments.js",
+    "./dist/bsky-comments.min.js",
+    "./src/index.ts"
+  ],
+  "scripts": {
+    "typecheck": "tsc --noEmit",
+    "build": "node build.mjs && tsc --emitDeclarationOnly"
+  },
+  "keywords": [
+    "bluesky",
+    "atproto",
+    "at-protocol",
+    "comments",
+    "web-component",
+    "custom-element",
+    "privacy",
+    "static-site"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/laplacef/bsky-comments-client.git"
+  },
+  "homepage": "https://github.com/laplacef/bsky-comments-client#readme",
+  "bugs": {
+    "url": "https://github.com/laplacef/bsky-comments-client/issues"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "devDependencies": {
+    "esbuild": "^0.28.0",
+    "typescript": "^6.0.3"
+  }
+}
