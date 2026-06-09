@@ -18,6 +18,13 @@ function link(href: string, text: string, extraRel = ""): HTMLAnchorElement {
   return a;
 }
 
+function formatDate(iso: string): string {
+  const d = new Date(iso);
+  return Number.isNaN(d.getTime())
+    ? ""
+    : d.toLocaleDateString(undefined, { year: "numeric", month: "short", day: "numeric" });
+}
+
 function renderSpans(parts: Span[]): DocumentFragment {
   const frag = document.createDocumentFragment();
   for (const part of parts) {
@@ -52,6 +59,20 @@ function renderComment(c: Comment): HTMLLIElement {
   const handle = make("span", `${CLS}__handle`);
   handle.textContent = `@${c.author.handle}`;
   head.append(name, handle);
+
+  if (c.createdAt) {
+    const when = document.createElement("a");
+    when.href = c.url;
+    when.className = `${CLS}__date`;
+    when.target = "_blank";
+    when.rel = "noopener noreferrer";
+    when.referrerPolicy = "no-referrer";
+    const time = document.createElement("time");
+    time.dateTime = c.createdAt;
+    time.textContent = formatDate(c.createdAt);
+    when.append(time);
+    head.append(when);
+  }
 
   const body = make("div", `${CLS}__body`);
   body.append(renderSpans(c.spans));

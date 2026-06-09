@@ -103,6 +103,15 @@
   color: var(--bskyc-muted);
 }
 
+.bsky-comments__date {
+  color: var(--bskyc-muted);
+  text-decoration: none;
+}
+
+.bsky-comments__date:hover {
+  text-decoration: underline;
+}
+
 .bsky-comments__body {
   white-space: pre-wrap;
   overflow-wrap: anywhere;
