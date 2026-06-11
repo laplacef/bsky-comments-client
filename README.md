@@ -18,22 +18,22 @@ its DOM from text nodes, so it slots into a strict Content Security Policy.
 
 ## Install
 
-From a CDN, pinned to a version and with Subresource Integrity:
+From a CDN, pinned to a version:
 
 ```html
 <link rel="stylesheet"
-  href="https://cdn.jsdelivr.net/npm/bsky-comments-client@0.1.0/dist/bsky-comments.css"
-  integrity="sha384-…" crossorigin="anonymous">
+  href="https://cdn.jsdelivr.net/npm/bsky-comments-client@0.1.0/dist/bsky-comments.css">
 <script type="module"
-  src="https://cdn.jsdelivr.net/npm/bsky-comments-client@0.1.0/dist/bsky-comments.min.js"
-  integrity="sha384-…" crossorigin="anonymous"></script>
+  src="https://cdn.jsdelivr.net/npm/bsky-comments-client@0.1.0/dist/bsky-comments.min.js"></script>
 ```
 
 > [!NOTE]
-> Replace each `integrity` hash with the one published for the version you pin.
-> Loading versionless or hash-less CDN URLs trusts the CDN not to alter the file.
-> Under a strict CSP, self-hosting (below) avoids the third-party origin entirely
-> and is the recommended path.
+> Consider adding [Subresource Integrity](https://developer.mozilla.org/en-US/docs/Web/Security/Subresource_Integrity)
+> (`integrity` + `crossorigin="anonymous"` attributes): jsDelivr's file listing
+> for the package offers a per-file "Copy with SRI" option for the version you
+> pin. A versionless or hash-less CDN URL trusts the CDN not to alter the file.
+> Under a strict CSP, self-hosting (below) avoids the third-party origin
+> entirely and is the recommended path.
 
 Or from npm, to self-host or bundle:
 
