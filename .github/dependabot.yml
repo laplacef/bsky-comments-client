@@ -1,0 +1,44 @@
+version: 2
+
+# Security updates run advisory-driven with no config; this adds routine
+# version-update PRs. Weekly, grouped to keep review load low. Patch and minor
+# bumps ride together and auto-merge once CI passes (see
+# .github/workflows/dependabot-auto-merge.yml); majors open individually and
+# stay manual so breaking changes get isolated review.
+updates:
+  # GitHub Actions used by ci.yml. Grouped into one PR so a weekly refresh of
+  # all actions is a single review, not several.
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: weekly
+      day: monday
+    commit-message:
+      prefix: ci
+    groups:
+      actions:
+        patterns:
+          - "*"
+    cooldown:
+      default-days: 5
+    open-pull-requests-limit: 5
+
+  # Client build and test deps (package.json + package-lock.json).
+  - package-ecosystem: npm
+    directory: /
+    schedule:
+      interval: weekly
+      day: monday
+    commit-message:
+      prefix: chore(deps)
+    groups:
+      npm-minor-patch:
+        update-types:
+          - minor
+          - patch
+    cooldown:
+      default-days: 5
+      semver-major-days: 14
+      semver-minor-days: 7
+      semver-patch-days: 3
+    open-pull-requests-limit: 5
