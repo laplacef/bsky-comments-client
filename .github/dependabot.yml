@@ -1,13 +1,9 @@
 version: 2
 
-# Security updates run advisory-driven with no config; this adds routine
-# version-update PRs. Weekly, grouped to keep review load low. Patch and minor
-# bumps ride together and auto-merge once CI passes (see
-# .github/workflows/dependabot-auto-merge.yml); majors open individually and
-# stay manual so breaking changes get isolated review.
+# Weekly grouped version updates, on top of the advisory-driven security
+# updates. Patch and minor auto-merge once CI passes; majors stay manual.
+# Cooldown holds new releases a few days; security updates bypass it.
 updates:
-  # GitHub Actions used by ci.yml. Grouped into one PR so a weekly refresh of
-  # all actions is a single review, not several.
   - package-ecosystem: github-actions
     directory: /
     schedule:
@@ -23,7 +19,6 @@ updates:
       default-days: 5
     open-pull-requests-limit: 5
 
-  # Client build and test deps (package.json + package-lock.json).
   - package-ecosystem: npm
     directory: /
     schedule:

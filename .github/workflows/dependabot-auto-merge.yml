@@ -1,16 +1,9 @@
 name: dependabot-auto-merge
 
-# Enables GitHub native auto-merge for low-risk Dependabot PRs. `--auto` waits
-# for required status checks (ci.yml) to pass before merging, so a bump that
-# breaks the build never lands. Scope: patch and minor only; majors stay manual.
-#
-# Security notes:
-#   - Triggers on `pull_request`, NOT `pull_request_target`: this job never
-#     checks out or executes the PR's code, only reads metadata and calls the
-#     merge API, so it needs no elevated token or secret exposure.
-#   - Dependabot-triggered runs get a read-only GITHUB_TOKEN by default; the
-#     permissions block below re-grants only what the merge call needs.
-#   - The whole job is gated on the dependabot[bot] actor.
+# Enables native auto-merge for patch and minor Dependabot PRs; `--auto` waits
+# on required status checks, so a bump that breaks CI never lands. Triggers on
+# `pull_request`, not `pull_request_target`, and never checks out PR code, so
+# no elevated token or secret is exposed.
 on: pull_request
 
 permissions:
